@@ -2,11 +2,9 @@ import request from 'superagent';
 
 export const getToDos = async() => {
     const data = await request.get('https://enigmatic-meadow-92328.herokuapp.com/api/todos');
-
     const todos = data.body;
 
     return todos;
-
 };
 
 export const addToDo = async(todo) => {
@@ -15,4 +13,6 @@ export const addToDo = async(todo) => {
 
 // updateToDo(todo);
 
-// removeToDo(todoId);
+export const deleteToDo = async(todoId) => {
+    const data = await request.delete(`https://enigmatic-meadow-92328.herokuapp.com/api/todo/${todoId}`)
+};

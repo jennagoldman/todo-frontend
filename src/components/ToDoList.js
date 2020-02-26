@@ -7,7 +7,11 @@ export default class ToDoList extends Component {
             <div className="list-container">
                 <ul>
                     {this.props.todos.map(todo => 
-                        <ToDoItem todo={todo} key={Math.floor(Math.random()*1000+1)} />
+                        <ToDoItem 
+                            todo={todo} 
+                            key={Math.floor(Math.random()*1000+1)} 
+                            handleDelete={this.props.handleDelete} 
+                        />
                     )}
                 </ul>
             </div>

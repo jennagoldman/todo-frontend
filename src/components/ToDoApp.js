@@ -1,12 +1,13 @@
 import React, {  Component } from 'react';
 import ToDoList from './ToDoList';
-import { getToDos, addToDo } from '../api-services';
+import { getToDos, addToDo, deleteToDo } from '../api-services';
 import AddToDoForm from './AddToDoForm';
 import request from 'superagent';
 
 export default class ToDoApp extends Component {
     state = {
-        todos: []
+        todos: [],
+        toDoToDelete: {}
       }
     
     componentDidMount = async() => {
@@ -20,7 +21,7 @@ export default class ToDoApp extends Component {
         })
     }
     
-    handleClick = async () => {
+    handleClick = async() => {
         const newToDo = {
             id: Math.floor(Math.random()*100),
             description: this.state.todoInput,
@@ -34,6 +35,16 @@ export default class ToDoApp extends Component {
         await addToDo(newToDo);
     }
 
+    // handleDelete = async() => {
+    //     this.setState({
+    //         toDoToDelete: this.props.todo
+    //     })
+
+    //     const id = this.state.toDoToDelete.id;
+
+    //     await deleteToDo(id);
+    // }
+
 
     render() {
         return (
@@ -43,7 +54,9 @@ export default class ToDoApp extends Component {
                     handleClick={this.handleClick} 
                     handleInput={this.handleInput} 
                 />
-                <ToDoList todos={this.state.todos} />
+                <ToDoList 
+                    todos={this.state.todos} 
+                    handleDelete={this.handleDelete}  />
             </div>
         )
     }

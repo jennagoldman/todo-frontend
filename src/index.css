@@ -1,4 +1,6 @@
 body {
+  font-family: 'Kalam';
+  font-weight: 300;
   text-align: center;
 }
 
@@ -7,13 +9,33 @@ body {
 }
 .list-container {
   text-align: left;
-  border: 1px solid black;
-  width: 70%;
+  /* border: 1px solid black; */
+  width: 350px;
   margin: 0 auto;
-  padding-left: 40px;
 }
 
 ul {
   list-style: none;
   padding-inline-start: 0;
+}
+
+.todo-item-div {
+  width: 300px;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.delete-btn {
+  color: tomato;
+  background: #FFF;
+  padding: 5px;
+  border: 1px solid tomato;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  color: #FFF;
+  background: tomato;
 }
