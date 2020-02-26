@@ -9,7 +9,9 @@ export const getToDos = async() => {
 
 };
 
-// addToDo(todo);
+export const addToDo = async(todo) => {
+    const data = await request.post('https://enigmatic-meadow-92328.herokuapp.com/api/todos', todo)
+};
 
 // updateToDo(todo);
 

@@ -4,10 +4,10 @@ import ToDoItem from './ToDoItem';
 export default class ToDoList extends Component {
     render() {
         return (
-            <div>
+            <div className="list-container">
                 <ul>
                     {this.props.todos.map(todo => 
-                        <ToDoItem todo={todo} />
+                        <ToDoItem todo={todo} key={Math.floor(Math.random()*1000+1)} />
                     )}
                 </ul>
             </div>
