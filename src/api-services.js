@@ -11,7 +11,9 @@ export const addToDo = async(todo) => {
     const data = await request.post('https://enigmatic-meadow-92328.herokuapp.com/api/todos', todo)
 };
 
-// updateToDo(todo);
+export const updateToDo = async(todo) => {
+    const data = await request.put(`https://enigmatic-meadow-92328.herokuapp.com/api/todo/${todo.id}`, todo)
+}
 
 export const deleteToDo = async(todoId) => {
     const data = await request.delete(`https://enigmatic-meadow-92328.herokuapp.com/api/todo/${todoId}`)

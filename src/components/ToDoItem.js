@@ -12,7 +12,17 @@ export default class ToDoItem extends Component {
         return (
             <li>
                 <div className="todo-item-div">
-                    <span>{this.props.todo.description}</span>
+                    <span 
+                        onClick={this.props.handleToggle} 
+                        id={this.props.todo.id} 
+                        style={{
+                            textDecoration: this.props.todo.complete 
+                            ? 'line-through' 
+                            : 'none'
+                        }}
+                    >
+                        {this.props.todo.description}
+                    </span>
                     <i 
                         className="far fa-trash-alt"
                         onClick={this.props.handleDelete} 

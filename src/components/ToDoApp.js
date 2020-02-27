@@ -1,6 +1,6 @@
 import React, {  Component } from 'react';
 import ToDoList from './ToDoList';
-import { getToDos, addToDo, deleteToDo } from '../api-services';
+import { getToDos, addToDo, deleteToDo, updateToDo } from '../api-services';
 import AddToDoForm from './AddToDoForm';
 // import request from 'superagent';
 
@@ -34,6 +34,19 @@ export default class ToDoApp extends Component {
         await addToDo(newToDo);
     }
 
+    handleToggle = async(event) => {
+        const toDoIdToUpdate = Number(event.target.id);
+
+        const newToDos = this.state.todos.slice();
+
+        const toDoToUpdate = newToDos.find(todo => todo.id === toDoIdToUpdate);
+        toDoToUpdate.complete = !toDoToUpdate.complete;
+
+        this.setState({ todos: newToDos });
+        
+        await updateToDo(toDoToUpdate);
+    }
+
     handleDelete = async(event) => {
         const toDoToDelete = event.target.id;
         const todos = [...this.state.todos];
@@ -58,7 +71,8 @@ export default class ToDoApp extends Component {
                 />
                 <ToDoList 
                     todos={this.state.todos} 
-                    handleDelete={this.handleDelete}
+                    handleDelete={this.handleDelete} 
+                    handleToggle={this.handleToggle}
                 />
             </div>
         )

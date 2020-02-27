@@ -10,6 +10,7 @@ export default class ToDoList extends Component {
                         <ToDoItem 
                             todo={todo} 
                             key={todo.id} 
+                            handleToggle={this.props.handleToggle} 
                             handleDelete={this.props.handleDelete} 
                         />
                     )}

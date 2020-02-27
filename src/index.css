@@ -35,9 +35,8 @@ ul {
 
 .todo-item-div span {
   margin-top: 3px;
+  cursor: pointer;
 }
-
-
 
 .todo-item-div i {
   color: tomato;
