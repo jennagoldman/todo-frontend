@@ -9,7 +9,7 @@ export default class ToDoList extends Component {
                     {this.props.todos.map(todo => 
                         <ToDoItem 
                             todo={todo} 
-                            key={Math.floor(Math.random()*1000+1)} 
+                            key={todo.id} 
                             handleDelete={this.props.handleDelete} 
                         />
                     )}

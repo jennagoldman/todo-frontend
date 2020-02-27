@@ -11,7 +11,7 @@ export default class App extends Component {
     return (
       <div className="App">
         <header>
-          <h1>toDONE!</h1>
+          <h1>toDONE</h1>
         </header>
         <Router>
           <Switch>

@@ -2,12 +2,11 @@ import React, {  Component } from 'react';
 import ToDoList from './ToDoList';
 import { getToDos, addToDo, deleteToDo } from '../api-services';
 import AddToDoForm from './AddToDoForm';
-import request from 'superagent';
+// import request from 'superagent';
 
 export default class ToDoApp extends Component {
     state = {
-        todos: [],
-        toDoToDelete: {}
+        todos: []
       }
     
     componentDidMount = async() => {
@@ -23,7 +22,7 @@ export default class ToDoApp extends Component {
     
     handleClick = async() => {
         const newToDo = {
-            id: Math.floor(Math.random()*100),
+            // id: Math.floor(Math.random()*100),
             description: this.state.todoInput,
             complete: false
         };
@@ -35,16 +34,19 @@ export default class ToDoApp extends Component {
         await addToDo(newToDo);
     }
 
-    // handleDelete = async() => {
-    //     this.setState({
-    //         toDoToDelete: this.props.todo
-    //     })
+    handleDelete = async(event) => {
+        const toDoToDelete = event.target.id;
+        const todos = [...this.state.todos];
+        todos.splice(this.state.todos.findIndex(todo => {
+            return todo.id === toDoToDelete
+        }), 1)
 
-    //     const id = this.state.toDoToDelete.id;
+        this.setState({
+            todos: todos
+        })
 
-    //     await deleteToDo(id);
-    // }
-
+        await deleteToDo(toDoToDelete);
+    }
 
     render() {
         return (
@@ -56,7 +58,8 @@ export default class ToDoApp extends Component {
                 />
                 <ToDoList 
                     todos={this.state.todos} 
-                    handleDelete={this.handleDelete}  />
+                    handleDelete={this.handleDelete}
+                />
             </div>
         )
     }

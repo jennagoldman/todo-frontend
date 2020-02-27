@@ -9,7 +9,10 @@ export default class AddToDoForm extends Component {
                     onChange={this.props.handleInput} 
                     placeholder="New to do" 
                 />
-                <button onClick={this.props.handleClick}>Add</button>
+                <button 
+                    onClick={this.props.handleClick}>
+                        Add
+                </button>
             </div>
         )
     }
