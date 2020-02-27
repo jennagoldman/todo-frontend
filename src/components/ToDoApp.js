@@ -22,7 +22,7 @@ export default class ToDoApp extends Component {
     
     handleClick = async() => {
         const newToDo = {
-            // id: Math.floor(Math.random()*100),
+            id: Math.floor(Math.random()*100),
             description: this.state.todoInput,
             complete: false
         };

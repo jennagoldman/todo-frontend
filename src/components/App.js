@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 // import AddToDoForm from './AddToDoForm';
 import ToDoApp from './ToDoApp';
+import ToDoAppSignIn from './ToDoAppSignIn';
 
-
+const isSignedIn = () => JSON.parse(localStorage.getItem('user'));
 
 export default class App extends Component {
   
@@ -15,7 +16,12 @@ export default class App extends Component {
         </header>
         <Router>
           <Switch>
-            <Route path="/" component={ToDoApp} />
+          <Route exact path='/' render={() => 
+                isSignedIn() 
+                    ? <ToDoApp />
+                    : <Redirect to="signin" />
+                } />
+          <Route exact path="/signin" component={ToDoAppSignIn} />
           </Switch>
         </Router>
       </div>

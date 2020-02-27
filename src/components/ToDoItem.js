@@ -12,9 +12,12 @@ export default class ToDoItem extends Component {
         return (
             <li>
                 <div className="todo-item-div">
-                    <span 
+                    <input 
+                        type="checkbox" 
                         onClick={this.props.handleToggle} 
                         id={this.props.todo.id} 
+                    />
+                    <span  
                         style={{
                             textDecoration: this.props.todo.complete 
                             ? 'line-through' 
